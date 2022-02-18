@@ -4,8 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation</title>
+    <style rel="stylesheet">
+      th {
+        border-style: solid;
+        border-color: black;
+      }
+      td {
+        border-style: solid;
+        border-color: black;
+      }
+    </style>
 </head>
 <body>
 <p>This API is the server-side component of a “movies” web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.</p>
+
+<table>
+    <tr>
+        <th>Request</th>
+        <th>URL</th>
+        <th>Request Parameter</th>
+        <th>HTTP Method</th>
+        <th>Response body data format</th>
+        <th>Request body data format</th>
+    </tr>
+    <tr> <!--All Movies-->
+        <td>Returns a list of all movies to the user</td>
+        <td>"/movies"</td>
+        <td>N/A</td>
+        <td>GET</td>
+        <td>
+          A JSON object holding data about all the movies <br>
+          Example:<br> 
+          <code>{Title: "One Flew Over the Cuckoo's Nest", 
+            Description: "", 
+            Director: { Name: "Milos Forman", Bio: "" }, 
+            Genre: { Name: "Drama", Description:""} }
+          </code>
+        </td>
+        <td>N/A</td>
+    </tr>
+    <tr> <!--Single Movie-->
+        <td>Returns data about a single movie by title to the user</td>
+        <td>"/movies/:title"</td>
+        <td>:title</td>
+        <td>GET</td>
+        <td>
+          A JSON object holding data about a single movie <br>
+          Example:<br>
+          <code>
+            {Title: "Dune", Description: ""}
+          </code>
+        </td>
+        <td>N/A</td>
+    </tr>
+    <tr> <!--Genre-->
+        <td>Returns data about a genre by name</td>
+        <td>"/movies/genre/:genreName"</td>
+        <td>:genreName</td>
+        <td>GET</td>
+        <td>
+          A JSON object holding data about a genre <br>
+          Example:<br>
+            <code>{Genre: { Name: "Drama", Description:""}}</code>
+        </td>
+        <td>N/A</td>
+    </tr>
+    <tr> <!--Director-->
+        <td>Returns data about a director by name</td>
+        <td>"/movies/directors/:directorName"</td>
+        <td>:directorName</td>
+        <td>GET</td>
+        <td>
+          A JSON object holding data about a director <br />
+          Exmple:<br>
+          <code>{Director: { Name: "Denis Villeneuve", Bio: "", Birth:"" }}</code>
+        </td>
+        <td>N/A</td>
+    </tr>
+    <tr> <!--Add Users-->
+        <td>Allows new users to register</td>
+        <td>"/users"</td>
+        <td>N/A</td>
+        <td>POST</td>
+        <td>
+          (*NOTE* A unique ID will generate upon creation)<br>
+          A JSON object holding data about new user that was added <br>
+          Example:<br>
+          <code>{id: #, name:"John", favoriteMovies:["Dune"]}</code>
+        </td>
+        <td>
+          A JSON object holding data about the user to add <br>
+          Example:<br>
+          <code>{name: "", favoriteMovies: [""]}</code>
+        </td>
+    </tr>
+    <tr> <!--Update Users Name-->
+        <td>Allows users to update their name</td>
+        <td>"/users/:id"</td>
+        <td>:id</td>
+        <td>PUT</td>
+        <td>
+          A JSON object holding users info and updated name<br>
+          Example:<br>
+          <code>{id: #, name:"_updated_name_", favoriteMovies:["Dune"]}</code>
+        </td>
+        <td>A JSON object holding updated data<br>
+          Example:<br>
+          <code>{name: '_updated_name_'}</code>
+        </td>
+    </tr>
+    <tr> <!--Add favoriteMovie-->
+        <td>Allows users to add a movie to their list of favorites</td>
+        <td>"/users/:id/:movieTitle"</td>
+        <td>:movieTitle</td>
+        <td>POST</td>
+        <td>
+          A message indicating that a movie has been added to a user's favorite movie(s)
+        </td>
+        <td>N/A</td>
+    </tr>
+    <tr> <!--Delete favoriteMovie-->
+        <td>Allows users to remove a movie from their list of favorites</td>
+        <td>"/users/:id/:movieTitle"</td>
+        <td>:movieTitle</td>
+        <td>DELETE</td>
+        <td>
+          A message indicating that a movie has been deleted from user's favorite movie(s)
+        </td>
+        <td>N/A</td>
+    </tr>
+    <tr> <!--Delete Account-->
+        <td>Allows existing users to delete account</td>
+        <td>"/users/:id"</td>
+        <td>:id</td>
+        <td>DELETE</td>
+        <td>A message indicating that the user has been deleted</td>
+        <td>N/A</td>
+    </tr>
+</table>
 </body>
 </html>
