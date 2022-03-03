@@ -35,10 +35,12 @@
         <td>
           A JSON object holding data about all the movies <br>
           Example:<br> 
-          <code>{Title: "One Flew Over the Cuckoo's Nest", 
-            Description: "", 
-            Director: { Name: "Milos Forman", Bio: "" }, 
-            Genre: { Name: "Drama", Description:""} }
+          <code>{ Title: "One Flew Over the Cuckoo's Nest", <br>
+            Description: "", <br>
+            Director: { Name: "Milos Forman", Bio: "" }, <br>
+            Genre: { Name: "Drama", Description:""},<br>
+            ImagePath: String,<br>
+            Featured: Boolean }
           </code>
         </td>
         <td>N/A</td>
@@ -51,8 +53,12 @@
         <td>
           A JSON object holding data about a single movie <br>
           Example:<br>
-          <code>
-            {Title: "Dune", Description: ""}
+          <code>{ Title: "One Flew Over the Cuckoo's Nest", <br>
+            Description: "", <br>
+            Director: { Name: "Milos Forman", Bio: "" }, <br>
+            Genre: { Name: "Drama", Description:""},<br>
+            ImagePath: String,<br>
+            Featured: Boolean }
           </code>
         </td>
         <td>N/A</td>
@@ -75,7 +81,7 @@
         <td>:directorName</td>
         <td>GET</td>
         <td>
-          A JSON object holding data about a director <br />
+          A JSON object holding data about a director <br>
           Exmple:<br>
           <code>{Director: { Name: "Denis Villeneuve", Bio: "", Birth:"" }}</code>
         </td>
@@ -90,32 +96,59 @@
           (*NOTE* A unique ID will generate upon creation)<br>
           A JSON object holding data about new user that was added <br>
           Example:<br>
-          <code>{id: #, name:"John", favoriteMovies:["Dune"]}</code>
+          <code>
+            {_id : ObjectId("6221198272f0506c7aa1db73"),<br>
+            Username : "testuser1083",<br>
+            Password : "testpassword300",<br>
+            Email : "testuser101@gmail.com",<br>
+            Birthday : "1953-09-02",<br>
+            FavoriteMovies : [ ObjectId('#') ]}
+          </code>
         </td>
         <td>
           A JSON object holding data about the user to add <br>
           Example:<br>
-          <code>{name: "", favoriteMovies: [""]}</code>
+          <code>
+            {_id : ObjectId("6221198272f0506c7aa1db73"),<br>
+            Username : "testuser1083",<br>
+            Password : "testpassword300",<br>
+            Email : "testuser101@gmail.com",<br>
+            Birthday : "1953-09-02",<br>
+            FavoriteMovies : [ ObjectId('#') ]}
+          </code>
         </td>
     </tr>
-    <tr> <!--Update Users Name-->
+    <tr> <!--Update Users-->
         <td>Allows users to update their name</td>
         <td>"/users/:id"</td>
         <td>:id</td>
         <td>PUT</td>
         <td>
-          A JSON object holding users info and updated name<br>
+          A JSON object holding updated user info<br>
           Example:<br>
-          <code>{id: #, name:"_updated_name_", favoriteMovies:["Dune"]}</code>
+          <code>
+            {_id : ObjectId("6221198272f0506c7aa1db73"),<br>
+            Username : "testuser1083",<br>
+            Password : "testpassword300",<br>
+            Email : "testuser101@gmail.com",<br>
+            Birthday : "1953-09-02",<br>
+            FavoriteMovies : [ ObjectId('#') ]}
+          </code>
         </td>
-        <td>A JSON object holding updated data<br>
+        <td>A JSON object holding data to be updated<br>
           Example:<br>
-          <code>{name: '_updated_name_'}</code>
+          <code>
+            {Username : "testuser1083",<br>
+            Password : "testpassword300",<br>
+            Email : "testuser101@gmail.com",<br>
+            Birthday : "1953-09-02",<br>
+            FavoriteMovies : [ ObjectId('#') ]}
+          </code>
         </td>
     </tr>
     <tr> <!--Add favoriteMovie-->
         <td>Allows users to add a movie to their list of favorites</td>
-        <td>"/users/:id/:movieTitle"</td>
+        <td>"/users/:Username/movies/:MovieID"</td>
         <td>:movieTitle</td>
         <td>POST</td>
         <td>
@@ -125,8 +158,8 @@
     </tr>
     <tr> <!--Delete favoriteMovie-->
         <td>Allows users to remove a movie from their list of favorites</td>
-        <td>"/users/:id/:movieTitle"</td>
-        <td>:movieTitle</td>
+        <td>"/users/:Username/movies/:MovieID"</td>
+        <td>:MovieID</td>
         <td>DELETE</td>
         <td>
           A message indicating that a movie has been deleted from user's favorite movie(s)
@@ -135,8 +168,8 @@
     </tr>
     <tr> <!--Delete Account-->
         <td>Allows existing users to delete account</td>
-        <td>"/users/:id"</td>
-        <td>:id</td>
+        <td>"/users/:Username"</td>
+        <td>:Username</td>
         <td>DELETE</td>
         <td>A message indicating that the user has been deleted</td>
         <td>N/A</td>

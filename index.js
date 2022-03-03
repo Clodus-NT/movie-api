@@ -104,10 +104,6 @@ app.put('/users/:Username', (req, res) => {
         }
     });
 });
-    //Read (all users)
-
-    //Read (user by username)
-
 // ----Movie Endpoints---- //
     //Read (all movies)
 app.get('/movies', (req, res) => {
