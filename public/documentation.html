@@ -118,6 +118,24 @@
           </code>
         </td>
     </tr>
+    <tr> <!--Login-->
+      <td>Allows existing users to login via their personal username and password</td>
+      <td>"/login/:Username/password/:Password"</td>
+      <td>N/A</td>
+      <td>POST</td>
+      <td>A json object containging user data along with their generated token<br>Example:<br>
+        <code>
+          {_id : ObjectId("6221198272f0506c7aa1db73"),<br>
+          Username : "testuser1083",<br>
+          Password : "testpassword300",<br>
+          Email : "testuser101@gmail.com",<br>
+          Birthday : "1953-09-02",<br>
+          FavoriteMovies : [ ObjectId('#') ]}<br>
+          token: "#"
+        </code>
+      </td>
+      <td>N/A</td>
+  </tr>
     <tr> <!--Update Users-->
         <td>Allows users to update their name</td>
         <td>"/users/:id"</td>
