@@ -87,6 +87,44 @@
         </td>
         <td>N/A</td>
     </tr>
+    <tr> <!--All Users-->
+      <td>Returns a list of all registered users</td>
+      <td>"/users"</td>
+      <td>N/A</td>
+      <td>GET</td>
+      <td>
+        JSON objects holding data about all registered users<br>
+          Example:<br>
+          <code>
+            {_id : ObjectId("6221198272f0506c7aa1db73"),<br>
+            Username : "testuser1083",<br>
+            Password : "testpassword300",<br>
+            Email : "testuser101@gmail.com",<br>
+            Birthday : "1953-09-02",<br>
+            FavoriteMovies : [ ObjectId('#') ]}
+          </code>
+      </td>
+      <td>N/A</td>
+    </tr>
+    <tr> <!--Single User-->
+      <td>Returns data about a single movie by title to the user</td>
+      <td>"/users/:Username"</td>
+      <td>:Username</td>
+      <td>GET</td>
+      <td>
+        JSON objects holding data about all registered users<br>
+        Example:<br>
+          <code>
+            {_id : ObjectId("6221198272f0506c7aa1db73"),<br>
+            Username : "testuser1083",<br>
+            Password : "testpassword300",<br>
+            Email : "testuser101@gmail.com",<br>
+            Birthday : "1953-09-02",<br>
+            FavoriteMovies : [ ObjectId('#') ]}
+          </code>
+      </td>
+      <td>N/A</td>
+  </tr>
     <tr> <!--Add Users-->
         <td>Allows new users to register</td>
         <td>"/users"</td>
@@ -135,7 +173,7 @@
         </code>
       </td>
       <td>N/A</td>
-  </tr>
+    </tr>
     <tr> <!--Update Users-->
         <td>Allows users to update their name</td>
         <td>"/users/:Username"</td>

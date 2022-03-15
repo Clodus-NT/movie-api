@@ -36,6 +36,28 @@ require('./passport');
 app.use(morgan('common'));
 
 // ----User Endpoints---- //
+    //READ (all users)
+app.get('/users', passport.authenticate('jwt', {session: false}), (req, res) => {
+    Users.find()
+        .then((users) => {
+            res.status(201).json(users);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
+    //READ (user by username)
+app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res) => {
+    Users.findOne({ Title: req.params.Title})
+        .then((user) => {
+            res.json(user);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
     //Create (new user)
 app.post('/users', 
     [
