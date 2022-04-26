@@ -215,36 +215,20 @@ app.get('/movies/director/:Name', passport.authenticate('jwt', {session: false})
         });
 });
     //Update (movie by title)
-app.put('/movies/:Title', 
+app.put('/movies/:Title',
     (req, res) => {
-        Movies.findOneAndUpdate({ Movie: req.params.Title }, { $set:
-            {
-                Title: {type: String, required: true},
-                Description: {type: String, required: true},
-                Genre: {
-                    Name: String,
-                    Description: String
-                },
-                Director: {
-                    Name: String,
-                    Bio: String,
-                    Birth: String,
-                    Death: String
-                },
-                ImagePath: String,
-                Featured: Boolean
-            }
-        },
-        { new: true },
-        (err, updatedMovie) => {
-            if(err) {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
-            } else {
-            res.json(updatedMovie);
-            }
-        });
-});
+        const body = req.body
+        Movies.findOneAndUpdate({ Movie: req.params.Title }, { $set: body },
+            { new: true },
+            (err, updatedMovie) => {
+                if(err) {
+                    console.error(err);
+                    res.status(500).send('Error ' + err);
+                } else {
+                    res.json(updatedMovie);
+                }
+            })
+    })
 
 //Listen for requests
 const port = process.env.PORT || 8080;
