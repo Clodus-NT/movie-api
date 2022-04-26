@@ -228,6 +228,8 @@ app.put('/movies/:Title',
                 Director: {
                     Name: String,
                     Bio: String,
+                    Birth: String,
+                    Death: String
                 },
                 ImagePath: String,
                 Featured: Boolean
