@@ -217,7 +217,7 @@ app.get('/movies/director/:Name', passport.authenticate('jwt', {session: false})
     //Update (movie by title)
 app.put('/movies/:Title', 
     (req, res) => {
-        Users.findOneAndUpdate({ Movie: req.params.Title }, { $set:
+        Movies.findOneAndUpdate({ Movie: req.params.Title }, { $set:
             {
                 Title: {type: String, required: true},
                 Description: {type: String, required: true},
