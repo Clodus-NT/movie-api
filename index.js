@@ -182,7 +182,7 @@ app.get('/movies', /*passport.authenticate('jwt', {session: false}),*/ (req, res
         });
 });
     //Read (single movie)
-app.get('/movies/:Title', passport.authenticate('jwt', {session: false}), (req, res) => {
+app.get('/movies/:Title', /*passport.authenticate('jwt', {session: false}),*/ (req, res) => {
     Movies.findOne({ Title: req.params.Title})
         .then((movie) => {
             res.json(movie);
