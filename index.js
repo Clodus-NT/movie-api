@@ -49,7 +49,7 @@ app.get('/users', passport.authenticate('jwt', {session: false}), (req, res) => 
 });
     //READ (user by username)
 app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res) => {
-    Users.findOne({ Title: req.params.Title})
+    Users.findOne({ Username: req.params.Username})
         .then((user) => {
             res.json(user);
         })
@@ -218,7 +218,7 @@ app.get('/movies/director/:Name', passport.authenticate('jwt', {session: false})
 app.put('/movies/:Title',
     (req, res) => {
         const body = req.body
-        Movies.findOneAndUpdate({ Movie: req.params.Title }, { $set: body },
+        Movies.findOneAndUpdate({ Title: req.params.Title }, { $set: body },
             { new: true },
             (err, updatedMovie) => {
                 if(err) {
