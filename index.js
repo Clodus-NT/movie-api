@@ -100,7 +100,7 @@ app.post('/users',
         });
 });
     //Create (user fav movie)
-app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}), (req, res) => {
+app.post('/users/:Username/movies/:MovieID', /*passport.authenticate('jwt', {session: false}),*/ (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.Username }, 
         { $push: { FavoriteMovies: req.params.MovieID }
     },
